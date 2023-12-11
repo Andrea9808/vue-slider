@@ -41,21 +41,52 @@ createApp({
     },
 
     methods:{
+
+        //bottone prev
         prevImg(){
             this.activeImage --;
             if(this.activeImage < 0){
                 this.activeImage = this.slides.length -1;
             }
+
+            //imposto lo stop del timer al click
+            this.stopTimer();
         },
 
+        //bottone next
         nextImg(){
             this.activeImage ++;
             if(this.activeImage > this.slides.length -1){
                 this.activeImage = 0;
             }
+
+             //imposto lo stop del timer al click
+            this.stopTimer();
         },
-    }
-    
+
+        //al click del div (img)
+        divclick(i){
+            this.activeImage = i;
+        },
+        
+        //creo funzione di timer
+        startTimer() {
+            this.play = setInterval(() => {
+                this.activeImage ++;
+            }, 3000)
+        },
+
+        //creo funzione stop timer
+        stopTimer(){
+            clearInterval(this.play);
+        }
+  
+    },
+
+    // quando l'applicazione è terminata
+    mounted() {
+        this.startTimer();
+      },
 
 }).mount("#app")
 

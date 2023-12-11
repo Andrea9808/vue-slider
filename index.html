@@ -18,7 +18,8 @@
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
 
-                <div class="item">
+                <!-- @mouseenter e @mouseleave hanno la funzione di causare un evento al passaggio del mouse, in questo caso del timer che si ferma (@mouseenter) e che riprende a marciare (@mouseleave) -->
+                <div class="item" @mouseenter="stopTimer" @mouseleave="startTimer">
                     <img :src="slides[activeImage].image" alt="slides[activeImage].title" />
                     <div class="text">
                         <h3> {{slides[activeImage].title}}</h3>
@@ -33,7 +34,7 @@
                     <div class="next" @click = "nextImg"></div>
 
                     <!-- THUMBNAILS -->
-                    <div class="thumb" v-for = "(img,i) in slides" :key="i" :class = "activeImage === i ? 'active' : '' ">
+                    <div class="thumb" v-for = "(img,i) in slides" :key="i" :class = "activeImage === i ? 'active' : '' " @click = " divclick(i)">
                         <img  :src="img.image" alt="slide.title" />
                     </div>
                 </div>
