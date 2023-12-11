@@ -28,12 +28,12 @@
                     </div>
                 </div>
 
-                <div class="thumbs active">
+                <div class="thumbs">
                     <div class="prev" @click = "prevImg"></div>
                     <div class="next" @click = "nextImg"></div>
 
                     <!-- THUMBNAILS -->
-                    <div class="thumb" v-for = "img in slides" :class = "activeImage === i ? 'active' : '' ">
+                    <div class="thumb" v-for = "(img,i) in slides" :key="i" :class = "activeImage === i ? 'active' : '' ">
                         <img  :src="img.image" alt="slide.title" />
                     </div>
                 </div>
